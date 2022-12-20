@@ -1,0 +1,114 @@
+:root {
+    --main-color: #EAAC8B;
+    --secondary-color: #355070;
+    --accent-color: #E56B6F;
+    --font-color: #FFFFFF;
+
+    --title-font: Verdana, Geneva, Tahoma, sans-serif;
+    --body-font: 'Courier New', Courier, monospace;  
+
+    font-size: 16px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    height: 100vh;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+header,
+footer {
+    background-color: var(--secondary-color);
+    color: var(--font-color);
+    padding: 4%;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+h1 {
+    font-family: var(--title-font);
+    margin-bottom: 4%;
+    font-size: 1.953rem;
+}
+
+h2 {
+    font-family: var(--body-font);
+    font-size: 1.563rem;
+}
+
+h3 {
+    font-family: var(--body-font);
+    font-size: 1.25rem;
+}
+
+p {
+    font-family: var(--body-font);
+    font-size: 1rem;
+}
+
+button {
+    background-color: var(--accent-color);
+    border-radius: 1em;
+    border: none;
+    padding: 5%;
+    margin: 4%;
+    align-self: center;
+}
+
+button:hover {
+    background-color: var(--secondary-color);
+    color: var(--font-color);
+    cursor: pointer;
+}
+
+.start-game {
+    margin: 4%;
+    display: flex;
+    flex-direction: column;
+}
+
+.start-game div h2,
+.start-game div p {
+    margin: 4%;
+}
+
+.active {
+    display: inline-flex;
+}
+
+
+
+@media screen and (min-width: 999px) {
+    .start-game {
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .start-game div {
+        width: fit-content;
+    }
+
+    footer {
+        padding: 2%;
+    }
+
+    h1 {
+        margin: 0;
+    }
+
+}
