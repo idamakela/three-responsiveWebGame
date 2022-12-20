@@ -86,10 +86,30 @@ button:hover {
     margin: 4%;
 }
 
-.active {
-    display: inline-flex;
+.keyboard {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
 }
 
+.keyboard button {
+    font-weight: 700;
+    margin: 1%;
+}
+
+.answer {
+    text-align: center;
+    padding: 8%;
+    font-size: 1.953rem;
+    font-weight: 700;
+}
+
+.cancel-restart {
+    display: flex;
+    justify-content: center;
+    margin: 6%;
+}
 
 
 @media screen and (min-width: 999px) {
