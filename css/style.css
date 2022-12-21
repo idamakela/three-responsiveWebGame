@@ -1,8 +1,7 @@
 :root {
-    --main-color: #EAAC8B;
+    --main-color: #FFFFFF;
     --secondary-color: #355070;
     --accent-color: #E56B6F;
-    --font-color: #FFFFFF;
 
     --title-font: Verdana, Geneva, Tahoma, sans-serif;
     --body-font: 'Courier New', Courier, monospace;  
@@ -29,7 +28,7 @@ body {
 header,
 footer {
     background-color: var(--secondary-color);
-    color: var(--font-color);
+    color: var(--main-color);
     padding: 4%;
 }
 
@@ -71,7 +70,7 @@ button {
 
 button:hover {
     background-color: var(--secondary-color);
-    color: var(--font-color);
+    color: var(--main-color);
     cursor: pointer;
 }
 
@@ -109,6 +108,15 @@ button:hover {
     display: flex;
     justify-content: center;
     margin: 6%;
+}
+
+.progress {
+    border: 4px var(--secondary-color) dashed;
+    margin: 4%;
+    display: flex;
+    flex-direction: column;
+    padding: 4%;
+    text-align: center;
 }
 
 
