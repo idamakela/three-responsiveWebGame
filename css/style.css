@@ -100,6 +100,7 @@ button:hover {
 .answer {
     text-align: center;
     padding: 8%;
+    min-height: 38px;
     font-size: 1.953rem;
     font-weight: 600;
     font-family: var(--body-font);
@@ -118,6 +119,7 @@ button:hover {
     flex-direction: column;
     padding: 4%;
     text-align: center;
+    min-height: 162px;
 }
 
 button:disabled {
