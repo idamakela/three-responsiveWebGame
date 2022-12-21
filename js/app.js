@@ -17,17 +17,34 @@ $(function() {
     let answer = "";
     let answerLetters = [];
     let userInput = "";
-    let userGuessed = [];
     let userStatus = "";
-    let startMessage = "Select a letter!";
-    let wrongMessage = "Wrong guess! <br><br> Guess again!";
-    let rightMessage = "Right guess! <br><br> Try another one!";
     let maxWrong = 0;
     let remainingLetters = 0;
 
-    $("#start-button").click(gameFunction);
     $(".cancel-restart").hide();
     $(".progress").hide();
+    $("#start-button").click(gameFunction);
+
+    $("#cancel-button").click(function() {
+        location.reload(true);
+    });
+
+
+    
+    $("#restart-button").click(function() {
+        //clear everything
+        maxWrong = 0;
+        remainingLetters = 0;
+        clearArray(answerLetters);
+        $(".answer").hide();
+        $(".progress").hide();
+        $(".keyboard").hide();
+
+        gameFunction();
+    });
+
+
+
 
     function gameFunction() {
         $(".cancel-restart").show();
@@ -43,25 +60,15 @@ $(function() {
         }
 
         $(".answer").append(answerLetters.join(" "));
-        $(".progress").html("<h3>" + startMessage + "<br><br> You have " + maxWrong + " lives left." + "</h3>")
+        $(".progress").html("<h3>Select a letter! <br><br> You have " + maxWrong + " lives left." + "</h3>")
 
         createKeyboard(alphabet, letterButtons);
 
         $(".keyboard button").on("click",  testUserInput);
-        
-        $("#cancel-button").click(function() {
-            location.reload(true);
-        });
-
-        $("#restart-button").click(function() {
-
-        });
-
     }
 
     function testUserInput() {
         $(this).attr("disabled", "true");
-        userGuessed.push($(this).text());
         userInput = $(this).text();
 
         if (answer.includes(userInput)) {                  
@@ -72,10 +79,10 @@ $(function() {
                 }
             }
             remainingLetters--;
-            $(".progress").html("<h3>" + rightMessage + "<br><br> You have " + maxWrong + " lives left." + "</h3>")
+            $(".progress").html("<h3>Right guess! <br><br> Try another one! <br><br> You have " + maxWrong + " lives left." + "</h3>")
         } else {
             maxWrong--;
-            $(".progress").html("<h3>" + wrongMessage + "<br><br> You have " + maxWrong + " lives left." + "</h3>")
+            $(".progress").html("<h3>Wrong guess! <br><br> Guess again! <br><br> You have " + maxWrong + " lives left." + "</h3>")
         }
         
         if (maxWrong === 0) {
@@ -112,5 +119,15 @@ $(function() {
 
     function randomWord(targetArray) {
         return targetArray[Math.floor(Math.random() * targetArray.length)];
+    }
+
+    function clearArray(targetArray) {
+        while (targetArray.length > 0) {
+            targetArray.pop();
+        }
+    }
+
+    function reset() {
+
     }
 });
