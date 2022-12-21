@@ -101,7 +101,8 @@ button:hover {
     text-align: center;
     padding: 8%;
     font-size: 1.953rem;
-    font-weight: 700;
+    font-weight: 600;
+    font-family: var(--body-font);
 }
 
 .cancel-restart {
@@ -117,6 +118,11 @@ button:hover {
     flex-direction: column;
     padding: 4%;
     text-align: center;
+}
+
+button:disabled {
+    background-color: #5f7590b0;
+    color: var(--main-color);
 }
 
 
