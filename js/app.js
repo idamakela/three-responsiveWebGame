@@ -70,10 +70,10 @@ $(function() {
                 }
             }
             --remainingLetters;
-            $(".progress").html("<h3>Right guess! <br><br> Try another one! <br><br> You have " + maxWrong + " lives left." + "</h3>")
+            $(".progress").html("<h3>Right guess! <br><br> Try another one! <br><br> You have " + maxWrong + " lives left." + "</h3>");
         } else {
             --maxWrong;
-            $(".progress").html("<h3>Wrong guess! <br><br> Guess again! <br><br> You have " + maxWrong + " lives left." + "</h3>")
+            $(".progress").html("<h3>Wrong guess! <br><br> Guess again! <br><br> You have " + maxWrong + " lives left." + "</h3>");
         }
         
         if (maxWrong === 0) {
@@ -92,11 +92,9 @@ $(function() {
     function createKeyboard(targetArray, newArray) {
         isThisArray(targetArray);
         isThisArray(newArray);
-
-        for(i = 0; i < targetArray.length; i++) {
+        for (i = 0; i < targetArray.length; i++) {
             newArray.push("<button>" + targetArray[i] + "</button>");
         }
-
         $(".keyboard").html(newArray.join(""));
     }
 

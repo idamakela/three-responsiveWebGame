@@ -40,8 +40,8 @@ main {
 
 h1 {
     font-family: var(--title-font);
-    margin: 4%;
     font-size: 1.953rem;
+    margin: 4%;
 }
 
 h2 {
@@ -60,14 +60,6 @@ p {
     font-size: 1rem;
 }
 
-.cancel-restart button,
-#start-button {
-    border-radius: 1em;
-    background-color: var(--accent-color);
-    align-self: center;
-    margin: 6%;
-}
-
 button {
     border: none;
     padding: 5%;
@@ -84,10 +76,18 @@ button:disabled {
     color: var(--main-color);
 }
 
+.cancel-restart button,
+#start-button {
+    align-self: center;
+    background-color: var(--accent-color);
+    border-radius: 1em;
+    margin: 6%;
+}
+
 .start-game {
-    margin: 4%;
     display: flex;
     flex-direction: column;
+    margin: 4%;
 }
 
 .start-game div h2,
@@ -95,47 +95,9 @@ button:disabled {
     margin: 4%;
 }
 
-.responsive-keyboard {
+.parent-container {
     display: flex;
-    justify-content: center;
-}
-
-.keyboard {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: 4% 0 0 0;
-    max-width: 620px;
-}
-
-.keyboard button {
-    font-weight: 700;
-    margin: 0.5%;
-    background-color: #6699CC;
-    min-width: 48px;
-    min-height: 54px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-}
-
-.keyboard button:hover,
-.keyboard button:disabled {
-    background-color: #6699cc5c;
-}
-
-.answer {
-    text-align: center;
-    padding: 8%;
-    min-height: 38px;
-    font-size: 1.953rem;
-    font-weight: 600;
-    font-family: var(--body-font);
-}
-
-.cancel-restart {
-    display: flex;
+    flex-direction: column;
     justify-content: center;
 }
 
@@ -150,16 +112,53 @@ button:disabled {
     min-height: 162px;
 }
 
-.responsive-container {
+.answer {
+    font-family: var(--body-font);
+    font-size: 1.953rem;
+    font-weight: 600;
+    min-height: 38px;
+    padding: 8%;
+    text-align: center;
+}
+
+.container-keyboard {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+}
+
+.keyboard {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 4% 0 0 0;
+    max-width: 620px;
+}
+
+.keyboard button {
+    align-items: center;
+    background-color: #6699CC;
+    display: flex;
+    font-weight: 700;
+    justify-content: center;
+    margin: 0.5%;
+    min-height: 54px;
+    min-width: 48px;
+}
+
+.keyboard button:hover,
+.keyboard button:disabled {
+    background-color: #6699cc5c;
+}
+
+.cancel-restart {
+    display: flex;
     justify-content: center;
 }
 
 @media screen and (min-width: 500px) {
     h1 {
-        margin: 2%;
         font-size: 2.441rem;
+        margin: 2%;
     }
     
     h2 {
@@ -175,13 +174,13 @@ button:disabled {
         font-size: 1.25rem;
     }
 
+    .parent-container {
+        align-items: center;
+    }
+
     .container {
         min-width: 450px;
         margin: 2%;
-    }
-
-    .responsive-container {
-        align-items: center;
     }
 
     .progress {
@@ -194,16 +193,6 @@ button:disabled {
 }
 
 @media screen and (min-width: 999px) {
-    .start-game {
-        flex-direction: row;
-        justify-content: space-around;
-        align-items: center;
-    }
-
-    .start-game div {
-        width: fit-content;
-    }
-
     footer {
         padding: 2%;
     }
@@ -212,25 +201,15 @@ button:disabled {
         margin: 0;
     }
 
-    .keyboard {
-        max-width: 880px;
-
-    }
-
-    .keyboard button {
-        max-width: 48px;
-        max-height: 54px;
-        font-size: 1.25rem;
-    }
-
-    .responsive-container {
-        display: flex;
+    .start-game {
         align-items: center;
+        flex-direction: row;
+        justify-content: space-around;
     }
 
-    .progress {
-        min-height: 189px;
-        padding: 2%;
+    .parent-container {
+        align-items: center;
+        display: flex;
     }
 
     .score {
@@ -238,8 +217,24 @@ button:disabled {
         padding: 1%;
     }
 
+    .progress {
+        min-height: 189px;
+        padding: 2%;
+    }
+
     .answer {
         padding: 2%;
+    }
+
+    .keyboard {
+        max-width: 880px;
+
+    }
+
+    .keyboard button {
+        font-size: 1.25rem;
+        max-height: 54px;
+        max-width: 48px;
     }
 
     .cancel-restart button,
