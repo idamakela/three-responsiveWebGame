@@ -8,7 +8,7 @@ $(function() {
         "ANGEL",
         "GRAVE",
         "SPARE",
-        "GAME",
+        "GAMES",
         "SCORE",
         "DROWN"
     ];
