@@ -17,58 +17,49 @@ $(function() {
     let answer = "";
     let answerLetters = [];
     let userInput = "";
-    let userStatus = "";
+    let userWon = 0;
+    let userLost = 0;
     let maxWrong = 0;
     let remainingLetters = 0;
 
     $(".cancel-restart").hide();
     $(".progress").hide();
-    $("#start-button").click(gameFunction);
+    $(".score").hide();
+
+    $("#start-button").click(function() {
+        createKeyboard(alphabet, letterButtons);
+        $(".keyboard button").click(testUserInput);
+        gameFunction();
+    });
 
     $("#cancel-button").click(function() {
         location.reload(true);
     });
 
-
-    
     $("#restart-button").click(function() {
-        //clear everything
-        maxWrong = 0;
-        remainingLetters = 0;
-        clearArray(answerLetters);
-        $(".answer").hide();
-        $(".progress").hide();
-        $(".keyboard").hide();
-
+        resetGame();
         gameFunction();
     });
 
-
-
-
     function gameFunction() {
-        $(".cancel-restart").show();
+        $(".score").show();
         $(".progress").show();
+        $(".cancel-restart").show();
         $(".start-game").hide();
 
         answer = randomWord(words);
         maxWrong = answer.length + 2;
         remainingLetters = answer.length;
 
-        for (let i = 0; i < answer.length; i++) {
-            answerLetters[i]  = "_";
-        }
+        displayGuesses(answer, answerLetters);
 
         $(".answer").append(answerLetters.join(" "));
-        $(".progress").html("<h3>Select a letter! <br><br> You have " + maxWrong + " lives left." + "</h3>")
-
-        createKeyboard(alphabet, letterButtons);
-
-        $(".keyboard button").on("click",  testUserInput);
+        $(".progress").html("<h3>Select a letter! <br><br> You have " + maxWrong + " lives left." + "</h3>");
+        $(".score").html("<p>SCORE <br><br> WON: " + userWon  + " || LOST: " + userLost + "</p>");
     }
 
     function testUserInput() {
-        $(this).attr("disabled", "true");
+        $(this).prop("disabled", true);
         userInput = $(this).text();
 
         if (answer.includes(userInput)) {                  
@@ -78,25 +69,24 @@ $(function() {
                     $(".answer").text(answerLetters.join(" "));
                 }
             }
-            remainingLetters--;
+            --remainingLetters;
             $(".progress").html("<h3>Right guess! <br><br> Try another one! <br><br> You have " + maxWrong + " lives left." + "</h3>")
         } else {
-            maxWrong--;
+            --maxWrong;
             $(".progress").html("<h3>Wrong guess! <br><br> Guess again! <br><br> You have " + maxWrong + " lives left." + "</h3>")
         }
         
         if (maxWrong === 0) {
-            $(".progress").html("<h3>You Lost! <br><br> The answer was: " + answer.toUpperCase() + "<h3>")
-            $(".keyboard button").attr("disabled", "true")
-            userStatus = "lost";
+            $(".progress").html("<h3>You Lost! <br><br> The answer was: " + answer + "<h3>");
+            $(".keyboard button").prop("disabled", true);
+            ++userLost;
         } 
 
         if (remainingLetters === 0) {
-            $(".progress").html("<h3>Congratulations! <br><br> You have won the game! <br><br> The answer was: " + answer.toUpperCase() + "<h3>");
-            $(".keyboard button").attr("disabled", "true")
-            userStatus = "won";
+            $(".progress").html("<h3>Congratulations! <br><br> You have won the game! <br><br> The answer was: " + answer + "<h3>");
+            $(".keyboard button").prop("disabled", true);
+            ++userWon;
         }
-
     }
 
     function createKeyboard(targetArray, newArray) {
@@ -108,6 +98,12 @@ $(function() {
         }
 
         $(".keyboard").html(newArray.join(""));
+    }
+
+    function displayGuesses(answerVar, answerArr) {
+        for (let i = 0; i < answerVar.length; i++) {
+            answerArr[i] = "_";
+        }
     }
 
     function isThisArray(targetArray) {
@@ -127,7 +123,13 @@ $(function() {
         }
     }
 
-    function reset() {
-
+    function resetGame() {
+        maxWrong = 0;
+        remainingLetters = 0;
+        answer = "";
+        userInput = "";
+        clearArray(answerLetters);
+        $(".answer").append(answerLetters.join(" ")).empty();
+        $(".keyboard button").prop("disabled", false);
     }
 });

@@ -40,7 +40,7 @@ main {
 
 h1 {
     font-family: var(--title-font);
-    margin-bottom: 4%;
+    margin: 4%;
     font-size: 1.953rem;
 }
 
@@ -59,19 +59,32 @@ p {
     font-size: 1rem;
 }
 
-button {
-    background-color: var(--accent-color);
+h2.start-title{
+    padding-bottom: 8%;
+}
+
+.cancel-restart button,
+#start-button {
     border-radius: 1em;
+    background-color: var(--accent-color);
+    align-self: center;
+    margin: 6%;
+}
+
+button {
     border: none;
     padding: 5%;
-    margin: 4%;
-    align-self: center;
 }
 
 button:hover {
     background-color: var(--secondary-color);
     color: var(--main-color);
     cursor: pointer;
+}
+
+button:disabled {
+    background-color: #5f7590b0;
+    color: var(--main-color);
 }
 
 .start-game {
@@ -90,11 +103,21 @@ button:hover {
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+    margin: 4% 0 0 0;
 }
 
 .keyboard button {
     font-weight: 700;
-    margin: 1%;
+    margin: 0.5%;
+    background-color: #6699CC;
+    width: 3rem;
+    height: 3.375rem;
+
+}
+
+.keyboard button:hover,
+.keyboard button:disabled {
+    background-color: #6699cc5c;
 }
 
 .answer {
@@ -109,24 +132,20 @@ button:hover {
 .cancel-restart {
     display: flex;
     justify-content: center;
-    margin: 6%;
 }
 
-.progress {
+.container {
     border: 4px var(--secondary-color) dashed;
     margin: 4%;
     display: flex;
     flex-direction: column;
     padding: 4%;
     text-align: center;
+}
+
+.progress {
     min-height: 162px;
 }
-
-button:disabled {
-    background-color: #5f7590b0;
-    color: var(--main-color);
-}
-
 
 @media screen and (min-width: 999px) {
     .start-game {
@@ -145,6 +164,11 @@ button:disabled {
 
     h1 {
         margin: 0;
+    }
+
+    .keyboard button {
+        width: 4.188rem;
+        height: 4.5rem;
     }
 
 }
