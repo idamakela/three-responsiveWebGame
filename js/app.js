@@ -29,7 +29,7 @@ $(function() {
     $("#start-button").click(function() {
         createKeyboard(alphabet, letterButtons);
         $(".keyboard button").click(testUserInput);
-        gameFunction();
+        startGame();
     });
 
     $("#cancel-button").click(function() {
@@ -38,10 +38,10 @@ $(function() {
 
     $("#restart-button").click(function() {
         resetGame();
-        gameFunction();
+        startGame();
     });
 
-    function gameFunction() {
+    function startGame() {
         $(".score").show();
         $(".progress").show();
         $(".cancel-restart").show();
@@ -51,7 +51,7 @@ $(function() {
         maxWrong = answer.length + 2;
         remainingLetters = answer.length;
 
-        displayGuesses(answer, answerLetters);
+        displayAnswer(answer, answerLetters);
 
         $(".answer").append(answerLetters.join(" "));
         $(".progress").html("<h3>Select a letter! <br><br> You have " + maxWrong + " lives left." + "</h3>");
@@ -98,17 +98,16 @@ $(function() {
         $(".keyboard").html(newArray.join(""));
     }
 
-    function displayGuesses(answerVar, answerArr) {
+    function displayAnswer(answerVar, answerArr) {
         for (let i = 0; i < answerVar.length; i++) {
             answerArr[i] = "_";
         }
     }
 
     function isThisArray(targetArray) {
-        if (Array.isArray(targetArray)) {
-        } else {
+        if (!Array.isArray(targetArray)) {
             alert("Broken game");
-        }
+        };
     }
 
     function randomWord(targetArray) {
